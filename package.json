@@ -1,0 +1,29 @@
+{
+  "name": "mongoose-error-handler",
+  "version": "1.0.0",
+  "description": "Simplifies the errors from mongoose's scheme validation with internacionalization (i18nex) support",
+  "main": "./lib/mongoose-error-handler.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/davicrystal/mongoose-error-handler.git"
+  },
+  "keywords": [
+    "mongoose",
+    "error",
+    "handler",
+    "message",
+    "errors",
+    "i18next",
+    "i18n",
+    "express"
+  ],
+  "author": "Davi Crystal <davicrystal@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/davicrystal/mongoose-error-handler/issues"
+  },
+  "homepage": "https://github.com/davicrystal/mongoose-error-handler#readme"
+}
