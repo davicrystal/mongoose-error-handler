@@ -111,6 +111,6 @@ module.exports = router;
 ## Tests
 
 ```
-	mocha test.js -R spec
+$ mocha test.js -R spec
 
 ```
