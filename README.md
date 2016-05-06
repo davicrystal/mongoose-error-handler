@@ -24,7 +24,7 @@ Simplifies the errors from mongoose's scheme validation with internacionalizatio
 	  }
 ```
 
-## Before
+## After
 
 ```json
 	errors: { 
@@ -71,33 +71,32 @@ mongooseErrorHandler = require('mongoose-error-handler');
 // LOAD MODEL
 var myModel = require('../models/myModel');
 
-	router.post('/myroute', function(req, res, next) {
+router.post('/myroute', function(req, res, next) {
 
-        var newModel = new myModel({
+    var newModel = new myModel({
 
-          myField: 'foo',
+      myField: 'foo',
 
-        });
+    });
 
-        var error = newModel.validateSync();
+    var error = newModel.validateSync();
 
-		        if(error){
-				
-		        	res.status(400).json({success: false, msg: **mongooseErrorHandler.set(error, req.t)**});
-
-		        } else {
-
-			        // save the user
-			        newModel.save(function(err) {
-
-				          	res.status(200).json({success: true, msg: req.t('domain.domainInserted')});
-
-			        });
-
-	   			 }
+        if(error){
 		
+        	res.status(400).json({success: false, msg: **mongooseErrorHandler.set(error, req.t)**});
 
-  });
+        } else {
+
+	        // save the user
+	        newModel.save(function(err) {
+
+		       res.status(200).json({success: true, msg: req.t('domain.domainInserted')});
+
+	        });
+
+		}
+
+});
 
 module.exports = router;
 
@@ -107,6 +106,6 @@ module.exports = router;
 ## Tests
 
 ```
-	
+	mocha test.js -R spec
 
 ```
