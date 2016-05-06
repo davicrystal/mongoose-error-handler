@@ -36,6 +36,11 @@ Simplifies the errors from mongoose's scheme validation with internacionalizatio
 
 ```javascript
 
+// LOAD THE RESOURCES
+mongoose = require('mongoose');
+config = require('../config/general');
+mongoose.connect(config.database);
+
 // LOAD MODULE
 mongooseErrorHandler = require('mongoose-error-handler');
 
@@ -83,7 +88,7 @@ router.post('/myroute', function(req, res, next) {
 
         if(error){
 		
-        	res.status(400).json({success: false, msg: **mongooseErrorHandler.set(error, req.t)**});
+        	res.status(400).json({success: false, msg: mongooseErrorHandler.set(error, req.t)});
 
         } else {
 
