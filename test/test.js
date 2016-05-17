@@ -63,6 +63,42 @@ var diff = require('deep-diff').diff;
 			var myDiff = diff(objTest01, objTest02);
 
 			test.assert(myDiff == undefined);
+
+			var functionTest = function(string, array) {
+
+					if(string == 'domain.domainRequired')
+						return "Test {{varible}}".replace('{{varible}}',array.variable);
+					else
+						return string;
+			}
+
+			objTest01 = meh.set(objPreTest01, functionTest, {variable: 'teste-var'});
+
+			var objTest02 = { errors: { _domain: "Test teste-var"} };
+
+			var myDiff = diff(objTest01, objTest02);
+
+			console.log(myDiff);
+
+			test.assert(myDiff == undefined);
+
+
+			var functionTest = function(string, array) {
+
+					if(string == 'domain.domainRequired')
+						return "Test";
+					else
+						return string;
+			}
+
+			objTest01 = meh.set(objPreTest01, functionTest, 'no-array');
+
+			var objTest02 = { errors: { _domain: "Test"} };
+
+			var myDiff = diff(objTest01, objTest02);
+
+			test.assert(myDiff == undefined);
+
 			
 		});
 

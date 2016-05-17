@@ -84,22 +84,18 @@ router.post('/myroute', function(req, res, next) {
 
     });
 
-    var error = newModel.validateSync();
-
-        if(error){
+    // save
+    newModel.save(function(err) {
 		
-        	res.status(400).json({success: false, msg: mongooseErrorHandler.set(error, req.t)});
+			if(err)
+				// A Example of error handling
+				res.status(400).json({success: false, msg: mongooseErrorHandler.set(error, req.t)});
+			
+			else
+				// An Example with variable replacement in internacionalization's string
+       			res.status(200).json({success: true, msg: mongooseErrorHandler.set('myModel.myFieldInserted', req.t, {variableToReplace: 'Text replaced in string'})});       
 
-        } else {
-
-	        // save the user
-	        newModel.save(function(err) {
-
-		       res.status(200).json({success: true, msg: req.t('domain.domainInserted')});
-
-	        });
-
-		}
+    });
 
 });
 
