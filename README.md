@@ -88,12 +88,17 @@ router.post('/myroute', function(req, res, next) {
     newModel.save(function(err) {
 		
 			if(err)
-				// A Example of error handling
+
+				// An Example of error handling
 				res.status(400).json({success: false, msg: mongooseErrorHandler.set(error, req.t)});
-			
+				
 			else
+
 				// An Example with variable replacement in internacionalization's string
-       			res.status(200).json({success: true, msg: mongooseErrorHandler.set('myModel.myFieldInserted', req.t, {variableToReplace: 'Text replaced in string'})});       
+       			res.status(200).json({
+       				success: true,
+       				msg: mongooseErrorHandler.set('myModel.myFieldInserted', req.t, {variableToReplace: 'Text replaced in string'})
+       			});       
 
     });
 
