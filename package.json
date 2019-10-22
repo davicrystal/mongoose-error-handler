@@ -1,6 +1,6 @@
 {
   "name": "mongoose-error-handler",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Simplifies the errors from mongoose's scheme validation with internacionalization (i18nex) support",
   "main": "./lib/mongoose-error-handler.js",
   "scripts": {
