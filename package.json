@@ -1,10 +1,10 @@
 {
   "name": "mongoose-error-handler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simplifies the errors from mongoose's scheme validation with internacionalization (i18nex) support",
   "main": "./lib/mongoose-error-handler.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,8 @@
   "bugs": {
     "url": "https://github.com/davicrystal/mongoose-error-handler/issues"
   },
-  "homepage": "https://github.com/davicrystal/mongoose-error-handler#readme"
+  "homepage": "https://github.com/davicrystal/mongoose-error-handler#readme",
+  "devDependencies": {
+    "mocha": "^6.2.2"
+  }
 }

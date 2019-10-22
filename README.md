@@ -2,7 +2,7 @@
 
 Simplifies the errors from mongoose's scheme validation with internacionalization (i18nex) support
 
-
+## Validation Error
 ## Before
 
 ```json
@@ -29,6 +29,27 @@ Simplifies the errors from mongoose's scheme validation with internacionalizatio
 ```json
 	errors: { 
 		myField: "domain.domainRequired"
+	}
+```
+
+## Mongo Error
+## Before
+
+```json
+	{
+    driver: true,
+    name: "MongoError",
+    index: 0,
+    code: 11000,
+		errmsg: "E11000 duplicate key error collection: reportsService.service_5d272c4bf7b1cd009d593403 index: origin_id_1 dup key: { : \"TestOrigin\" }"
+	}
+```
+
+## After
+
+```json
+	errors: { 
+		MongoError: "E11000 duplicate key error collection: reportsService.service_5d272c4bf7b1cd009d593403 index: origin_id_1 dup key: { : \"TestOrigin\" }"
 	}
 ```
 

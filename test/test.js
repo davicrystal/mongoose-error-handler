@@ -82,7 +82,6 @@ var diff = require('deep-diff').diff;
 
 			test.assert(myDiff == undefined);
 
-
 			var functionTest = function(string, array) {
 
 					if(string == 'domain.domainRequired')
@@ -92,6 +91,43 @@ var diff = require('deep-diff').diff;
 			}
 
 			objTest01 = meh.set(objPreTest01, functionTest, 'no-array');
+
+			var objTest02 = { errors: { _domain: "Test"} };
+
+			var myDiff = diff(objTest01, objTest02);
+
+			test.assert(myDiff == undefined);
+
+
+			// --- Mongo Error
+
+			var objPreTest01 = {
+
+					driver: true,
+					name: "MongoError",
+					index: 0,
+					code: 11000,
+					errmsg: "domain.domainRequired"
+				};
+
+
+			var objTest02 = { errors: { MongoError: "domain.domainRequired"} };
+
+			objTest01 = meh.set(objPreTest01);
+
+			var myDiff = diff(objTest01, objTest02);
+
+			test.assert(myDiff == undefined);
+
+			var functionTest = function(string) {
+
+				if(string == 'domain.domainRequired')
+					return "Test";
+				else
+					return string;
+			}
+
+			objTest01 = meh.set(objPreTest01, functionTest);
 
 			var objTest02 = { errors: { _domain: "Test"} };
 
