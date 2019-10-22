@@ -175,6 +175,6 @@ module.exports = router;
 ## Tests
 
 ```
-$ mocha node-modules/mongoose-error-handler/test/test.js -R spec
+$ npm test
 
 ```

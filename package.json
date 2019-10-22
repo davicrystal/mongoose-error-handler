@@ -4,7 +4,7 @@
   "description": "Simplifies the errors from mongoose's scheme validation with internacionalization (i18nex) support",
   "main": "./lib/mongoose-error-handler.js",
   "scripts": {
-    "test": "mocha"
+    "test": "mocha test/unit/test.js -R spec"
   },
   "repository": {
     "type": "git",

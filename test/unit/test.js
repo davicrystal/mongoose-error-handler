@@ -1,6 +1,5 @@
-var test = require('unit.js');
-var meh = require('mongoose-error-handler');
-var diff = require('deep-diff').diff;
+var test = require('assert'),
+    meh = require('./../../lib/mongoose-error-handler');
 
 	describe('MONGOOSE ERROR HANDLER TEST', function(){
 
@@ -8,15 +7,15 @@ var diff = require('deep-diff').diff;
 
 			var objTest = {errors:"01"};
 
-			test.object(meh.set(objTest));
-
-			test.object(meh.set(objTest)).hasProperty('errors');
+            test.equal(typeof(meh.set(objTest)), 'object');
+            
+            test.deepEqual(meh.set(objTest), {errors:{}});
 
 			var strTest = 'test';
 
-			test.assert('test' == meh.set(strTest));
+			test('test' == meh.set(strTest));
 
-			test.assert(null == meh.set());
+			test(null == meh.set());
 
 			var objPreTest01 = {
 
@@ -44,9 +43,7 @@ var diff = require('deep-diff').diff;
 
 			objTest01 = meh.set(objPreTest01);
 
-			var myDiff = diff(objTest01, objTest02);
-
-			test.assert(myDiff == undefined);
+			test.deepEqual(objTest01, objTest02);
 
 			var functionTest = function(string) {
 
@@ -60,9 +57,7 @@ var diff = require('deep-diff').diff;
 
 			var objTest02 = { errors: { _domain: "Test"} };
 
-			var myDiff = diff(objTest01, objTest02);
-
-			test.assert(myDiff == undefined);
+			test.deepEqual(objTest01, objTest02);
 
 			var functionTest = function(string, array) {
 
@@ -76,11 +71,7 @@ var diff = require('deep-diff').diff;
 
 			var objTest02 = { errors: { _domain: "Test teste-var"} };
 
-			var myDiff = diff(objTest01, objTest02);
-
-			console.log(myDiff);
-
-			test.assert(myDiff == undefined);
+			test.deepEqual(objTest01, objTest02);
 
 			var functionTest = function(string, array) {
 
@@ -94,9 +85,7 @@ var diff = require('deep-diff').diff;
 
 			var objTest02 = { errors: { _domain: "Test"} };
 
-			var myDiff = diff(objTest01, objTest02);
-
-			test.assert(myDiff == undefined);
+			test.deepEqual(objTest01, objTest02);
 
 
 			// --- Mongo Error
@@ -115,9 +104,7 @@ var diff = require('deep-diff').diff;
 
 			objTest01 = meh.set(objPreTest01);
 
-			var myDiff = diff(objTest01, objTest02);
-
-			test.assert(myDiff == undefined);
+			test.deepEqual(objTest01, objTest02);
 
 			var functionTest = function(string) {
 
@@ -129,11 +116,9 @@ var diff = require('deep-diff').diff;
 
 			objTest01 = meh.set(objPreTest01, functionTest);
 
-			var objTest02 = { errors: { _domain: "Test"} };
-
-			var myDiff = diff(objTest01, objTest02);
-
-			test.assert(myDiff == undefined);
+			var objTest02 = { errors: { MongoError: "Test"} };
+            
+            test.deepEqual(objTest01, objTest02);
 
 			
 		});
